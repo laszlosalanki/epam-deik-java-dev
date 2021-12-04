@@ -27,6 +27,26 @@ public class Room {
         this.roomNumOfCols = roomNumOfCols;
     }
 
+    public Room(final RoomBuilder roomBuilder) {
+        this.roomName = roomBuilder.roomName;
+        this.roomNumOfRows = roomBuilder.roomNumOfRows;
+        this.roomNumOfCols = roomBuilder.roomNumOfCols;
+    }
+
+    public static RoomBuilder builder() { return new RoomBuilder(); }
+
+    public void setRoomName(String roomName) {
+        this.roomName = roomName;
+    }
+
+    public void setRoomNumOfRows(Long roomNumOfRows) {
+        this.roomNumOfRows = roomNumOfRows;
+    }
+
+    public void setRoomNumOfCols(Long roomNumOfCols) {
+        this.roomNumOfCols = roomNumOfCols;
+    }
+
     public String getRoomName() {
         return roomName;
     }
@@ -41,11 +61,16 @@ public class Room {
 
     @Override
     public String toString() {
-        return "Room{" +
-                "roomName='" + roomName + '\'' +
-                ", roomNumOfRows=" + roomNumOfRows +
-                ", roomNumOfCols=" + roomNumOfCols +
-                '}';
+        return new StringBuilder("Room ")
+                .append(roomName)
+                .append(" with ")
+                .append(roomNumOfCols*roomNumOfRows)
+                .append(" seats, ")
+                .append(roomNumOfRows)
+                .append(" rows and ")
+                .append(roomNumOfCols)
+                .append(" columns")
+                .toString();
     }
 
     @Override
@@ -59,5 +84,30 @@ public class Room {
     @Override
     public int hashCode() {
         return Objects.hash(roomName, roomNumOfRows, roomNumOfCols);
+    }
+
+    public static final class RoomBuilder {
+        private String roomName;
+        private Long roomNumOfRows;
+        private Long roomNumOfCols;
+
+        private RoomBuilder() {}
+
+        public RoomBuilder withRoomName(String roomName) {
+            this.roomName = roomName;
+            return this;
+        }
+
+        public RoomBuilder withRoomNumOfRows(Long roomNumOfRows) {
+            this.roomNumOfRows = roomNumOfRows;
+            return this;
+        }
+
+        public RoomBuilder withRoomNumOfCols(Long roomNumOfCols) {
+            this.roomNumOfCols = roomNumOfCols;
+            return this;
+        }
+
+        public Room build() { return new Room(this); }
     }
 }

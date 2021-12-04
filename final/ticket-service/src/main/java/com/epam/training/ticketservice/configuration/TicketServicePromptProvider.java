@@ -1,4 +1,4 @@
-package com.epam.training.ticketservice.presentation.cli;
+package com.epam.training.ticketservice.configuration;
 
 import org.jline.utils.AttributedString;
 import org.springframework.stereotype.Component;
@@ -9,6 +9,6 @@ public class TicketServicePromptProvider implements PromptProvider {
 
     @Override
     public AttributedString getPrompt() {
-        return new AttributedString("Ticket service>");
+        return new AttributedString(Constants.PROMPT);
     }
 }

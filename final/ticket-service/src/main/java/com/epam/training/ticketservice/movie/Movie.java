@@ -28,9 +28,9 @@ public class Movie {
     }
 
     public Movie(final MovieBuilder movieBuilder) {
-        this.movieTitle = movieBuilder.title;
-        this.movieGenre = movieBuilder.genre;
-        this.moviePlayTime = movieBuilder.playTime;
+        this.movieTitle = movieBuilder.movieTitle;
+        this.movieGenre = movieBuilder.movieGenre;
+        this.moviePlayTime = movieBuilder.moviePlayTime;
     }
 
     public static MovieBuilder builder() { return new MovieBuilder(); }
@@ -45,6 +45,18 @@ public class Movie {
 
     public int getMoviePlayTime() {
         return moviePlayTime;
+    }
+
+    public void setMovieTitle(String movieTitle) {
+        this.movieTitle = movieTitle;
+    }
+
+    public void setMovieGenre(String movieGenre) {
+        this.movieGenre = movieGenre;
+    }
+
+    public void setMoviePlayTime(Integer moviePlayTime) {
+        this.moviePlayTime = moviePlayTime;
     }
 
     @Override
@@ -77,24 +89,24 @@ public class Movie {
     }
 
     public static final class MovieBuilder {
-        private String title;
-        private String genre;
-        private Integer playTime;
+        private String movieTitle;
+        private String movieGenre;
+        private Integer moviePlayTime;
 
         private MovieBuilder() {}
 
-        public MovieBuilder withTitle(String title) {
-            this.title = title;
+        public MovieBuilder withMovieTitle(String movieTitle) {
+            this.movieTitle = movieTitle;
             return this;
         }
 
-        public MovieBuilder withGenre(String genre) {
-            this.genre = genre;
+        public MovieBuilder withMovieGenre(String movieGenre) {
+            this.movieGenre = movieGenre;
             return this;
         }
 
-        public MovieBuilder withPlayTime(Integer playTime) {
-            this.playTime = playTime;
+        public MovieBuilder withMoviePlayTime(Integer moviePlayTime) {
+            this.moviePlayTime = moviePlayTime;
             return this;
         }
 

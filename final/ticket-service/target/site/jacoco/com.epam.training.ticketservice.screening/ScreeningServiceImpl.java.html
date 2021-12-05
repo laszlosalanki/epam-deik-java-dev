@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="hu"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>ScreeningServiceImpl.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">ticket-service</a> &gt; <a href="index.source.html" class="el_package">com.epam.training.ticketservice.screening</a> &gt; <span class="el_source">ScreeningServiceImpl.java</span></div><h1>ScreeningServiceImpl.java</h1><pre class="source lang-java linenums">package com.epam.training.ticketservice.screening;
+
+import com.epam.training.ticketservice.data.Constants;
+import com.epam.training.ticketservice.helpers.OverlappingChecker;
+import com.epam.training.ticketservice.movie.Movie;
+import com.epam.training.ticketservice.room.Room;
+import org.springframework.stereotype.Service;
+
+import java.time.LocalDateTime;
+import java.util.List;
+
+@Service
+public class ScreeningServiceImpl implements ScreeningService {
+
+    private ScreeningRepo screeningRepo;
+
+<span class="fc" id="L17">    public ScreeningServiceImpl(ScreeningRepo screeningRepo) {</span>
+<span class="fc" id="L18">        this.screeningRepo = screeningRepo;</span>
+<span class="fc" id="L19">    }</span>
+
+    @Override
+    public List&lt;Screening&gt; getAllScreenings() {
+<span class="fc" id="L23">        return screeningRepo.findAll();</span>
+    }
+
+    @Override
+    public String createScreening(Movie movieOfScreening, Room roomOfScreening, LocalDateTime timeOfScreening) {
+<span class="fc bfc" id="L28" title="All 2 branches covered.">        if (OverlappingChecker.isScreeningOverlapsWithAnOtherScreening(screeningRepo,</span>
+                roomOfScreening, timeOfScreening)) {
+<span class="fc" id="L30">            return Constants.OVERLAPPING_SCREENING;</span>
+        }
+<span class="fc bfc" id="L32" title="All 2 branches covered.">        if (OverlappingChecker.isScreeningOverlapsWithBreakTime(screeningRepo, roomOfScreening, timeOfScreening)) {</span>
+<span class="fc" id="L33">            return Constants.OVERLAPPING_BREAK;</span>
+        }
+<span class="pc bpc" id="L35" title="3 of 6 branches missed.">        if (movieOfScreening != null &amp;&amp; roomOfScreening != null &amp;&amp; timeOfScreening != null) {</span>
+<span class="fc" id="L36">            screeningRepo.save(Screening.builder()</span>
+<span class="fc" id="L37">                    .withMovieOfScreening(movieOfScreening)</span>
+<span class="fc" id="L38">                    .withRoomOfScreening(roomOfScreening)</span>
+<span class="fc" id="L39">                    .withTimeOfScreening(timeOfScreening)</span>
+<span class="fc" id="L40">                    .build());</span>
+        }
+<span class="fc" id="L42">        return null;</span>
+    }
+
+    @Override
+    public void deleteScreening(Movie movieOfScreening, Room roomOfScreening, LocalDateTime timeOfScreening) {
+<span class="nc bnc" id="L47" title="All 2 branches missed.">        if (getScreening(movieOfScreening, roomOfScreening, timeOfScreening) != null) {</span>
+<span class="nc" id="L48">            screeningRepo.delete(getScreening(movieOfScreening, roomOfScreening, timeOfScreening));</span>
+        }
+<span class="nc" id="L50">    }</span>
+
+    private Screening getScreening(Movie movieOfScreening, Room roomOfScreening, LocalDateTime timeOfScreening) {
+<span class="nc" id="L53">        return screeningRepo.getScreeningByMovieOfScreeningAndRoomOfScreeningAndTimeOfScreening(movieOfScreening,</span>
+                roomOfScreening, timeOfScreening);
+    }
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.6.202009150832</span></div></body></html>

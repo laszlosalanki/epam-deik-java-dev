@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="hu"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>RoomCommandHandler.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">ticket-service</a> &gt; <a href="index.source.html" class="el_package">com.epam.training.ticketservice.room</a> &gt; <span class="el_source">RoomCommandHandler.java</span></div><h1>RoomCommandHandler.java</h1><pre class="source lang-java linenums">package com.epam.training.ticketservice.room;
+
+import com.epam.training.ticketservice.account.Account;
+import com.epam.training.ticketservice.account.AccountService;
+import com.epam.training.ticketservice.data.Constants;
+import com.epam.training.ticketservice.data.Role;
+import org.springframework.shell.Availability;
+import org.springframework.shell.standard.ShellComponent;
+import org.springframework.shell.standard.ShellMethod;
+import org.springframework.shell.standard.ShellMethodAvailability;
+
+import java.util.List;
+
+@ShellComponent
+public class RoomCommandHandler {
+
+    RoomService roomService;
+    AccountService accountService;
+
+<span class="nc" id="L20">    public RoomCommandHandler(RoomService roomService, AccountService accountService) {</span>
+<span class="nc" id="L21">        this.roomService = roomService;</span>
+<span class="nc" id="L22">        this.accountService = accountService;</span>
+<span class="nc" id="L23">    }</span>
+
+    @ShellMethodAvailability(&quot;accountAdmin&quot;)
+    @ShellMethod(value = Constants.CREATE_ROOM_METHOD_VALUE, key = Constants.CREATE_ROOM_COMMAND)
+    public void createRoom(String roomName, Long roomNumOfRows, Long roomNumOfCols) {
+<span class="nc" id="L28">        roomService.createRoom(roomName, roomNumOfRows, roomNumOfCols);</span>
+<span class="nc" id="L29">    }</span>
+
+    @ShellMethodAvailability(&quot;accountAdmin&quot;)
+    @ShellMethod(value = Constants.UPDATE_ROOM_METHOD_VALUE, key = Constants.UPDATE_ROOM_COMMAND)
+    public void updateRoom(String roomName, Long roomNumOfRows, Long roomNumOfCols) {
+<span class="nc" id="L34">        roomService.updateRoom(roomName, roomNumOfRows, roomNumOfCols);</span>
+<span class="nc" id="L35">    }</span>
+
+    @ShellMethodAvailability(&quot;accountAdmin&quot;)
+    @ShellMethod(value = Constants.DELETE_ROOM_METHOD_VALUE, key = Constants.DELETE_ROOM_COMMAND)
+    public void deleteRoom(String roomName) {
+<span class="nc" id="L40">        roomService.deleteRoom(roomName);</span>
+<span class="nc" id="L41">    }</span>
+
+    @ShellMethod(value = Constants.LIST_ROOMS_METHOD_VALUE, key = Constants.LIST_ROOMS_COMMAND)
+    public String listRooms() {
+<span class="nc" id="L45">        List&lt;Room&gt; roomList = roomService.getAllRooms();</span>
+<span class="nc bnc" id="L46" title="All 2 branches missed.">        if (roomList.size() == 0) {</span>
+<span class="nc" id="L47">            return Constants.NO_ROOMS_AVAILABLE;</span>
+        }
+<span class="nc" id="L49">        StringBuilder stringBuilder = new StringBuilder();</span>
+<span class="nc bnc" id="L50" title="All 2 branches missed.">        for (Room r : roomList) {</span>
+<span class="nc" id="L51">            stringBuilder.append(r.toString()).append('\n');</span>
+<span class="nc" id="L52">        }</span>
+<span class="nc" id="L53">        return stringBuilder.toString();</span>
+    }
+
+    private Availability accountAdmin() {
+<span class="nc" id="L57">        Account account = accountService.getActualAccount();</span>
+<span class="nc bnc" id="L58" title="All 2 branches missed.">        if (account != null) {</span>
+<span class="nc bnc" id="L59" title="All 2 branches missed.">            if (account.getAccountRole().equals(Role.ADMIN)) {</span>
+<span class="nc" id="L60">                return Availability.available();</span>
+            }
+        }
+<span class="nc" id="L63">        return Availability.unavailable(Constants.UNAVAILABLE_COMMAND);</span>
+    }
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.6.202009150832</span></div></body></html>

@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="hu"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>Constants.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">ticket-service</a> &gt; <a href="index.source.html" class="el_package">com.epam.training.ticketservice.data</a> &gt; <span class="el_source">Constants.java</span></div><h1>Constants.java</h1><pre class="source lang-java linenums">package com.epam.training.ticketservice.data;
+
+import com.epam.training.ticketservice.account.Account;
+import java.util.List;
+
+<span class="nc" id="L6">public class Constants {</span>
+    // Prompt
+    public static final String PROMPT = &quot;Ticket service&gt;&quot;;
+
+    // Date Time pattern
+    public static final String DATE_TIME_PATTERN = &quot;yyyy-MM-dd HH:mm&quot;;
+
+    // Break length in minutes
+    public static final int BREAK_LENGTH = 10;
+
+    // Log
+    public static final String NO_MOVIES_AVAILABLE = &quot;There are no movies at the moment&quot;;
+    public static final String NO_ROOMS_AVAILABLE = &quot;There are no rooms at the moment&quot;;
+    public static final String NO_SCREENINGS_AVAILABLE = &quot;There are no screenings&quot;;
+    public static final String LOGIN_FAILED_INCORRECT_CREDENTIALS = &quot;Login failed due to incorrect credentials&quot;;
+    public static final String NOT_SIGNED_IN = &quot;You are not signed in&quot;;
+    public static final String SIGNED_IN_PRIVILEGED_ACCOUNT = &quot;Signed in with privileged account '&quot;;
+    public static final String NOT_SIGNED_IN_WITH_ADMIN_ROLE = &quot;You are not an ADMIN&quot;;
+    public static final String ALREADY_SIGNED_OUT = &quot;Already signed out&quot;;
+    public static final String SIGNED_OUT = &quot;Signed out&quot;;
+<span class="nc" id="L26">    public static final String UNAVAILABLE_COMMAND = &quot;Your role is not &quot; + Role.ADMIN;</span>
+    public static final String OVERLAPPING_SCREENING = &quot;There is an overlapping screening&quot;;
+    public static final String
+            OVERLAPPING_BREAK = &quot;This would start in the break period after another screening in this room&quot;;
+
+    // Movie commands
+    public static final String CREATE_MOVIE_METHOD_VALUE = &quot;Create a new movie&quot;;
+    public static final String CREATE_MOVIE_COMMAND = &quot;create movie&quot;;
+
+    public static final String UPDATE_MOVIE_METHOD_VALUE = &quot;Update the given movie&quot;;
+    public static final String UPDATE_MOVIE_COMMAND = &quot;update movie&quot;;
+
+    public static final String DELETE_MOVIE_METHOD_VALUE = &quot;Delete the given movie&quot;;
+    public static final String DELETE_MOVIE_COMMAND = &quot;delete movie&quot;;
+
+    public static final String LIST_MOVIES_METHOD_VALUE = &quot;List the movies&quot;;
+    public static final String LIST_MOVIES_COMMAND = &quot;list movies&quot;;
+
+    // Room commands
+    public static final String CREATE_ROOM_METHOD_VALUE = &quot;Create a new room&quot;;
+    public static final String CREATE_ROOM_COMMAND = &quot;create room&quot;;
+
+    public static final String UPDATE_ROOM_METHOD_VALUE = &quot;Update a given room&quot;;
+    public static final String UPDATE_ROOM_COMMAND = &quot;update room&quot;;
+
+    public static final String DELETE_ROOM_METHOD_VALUE = &quot;Delete the given room&quot;;
+    public static final String DELETE_ROOM_COMMAND = &quot;delete room&quot;;
+
+    public static final String LIST_ROOMS_METHOD_VALUE = &quot;List the rooms&quot;;
+    public static final String LIST_ROOMS_COMMAND = &quot;list rooms&quot;;
+
+    // Screening commands
+    public static final String CREATE_SCREENING_METHOD_VALUE = &quot;Create a new screening&quot;;
+    public static final String CREATE_SCREENING_COMMAND = &quot;create screening&quot;;
+
+    public static final String LIST_SCREENINGS_METHOD_VALUE = &quot;List the screenings&quot;;
+    public static final String LIST_SCREENINGS_COMMAND = &quot;list screenings&quot;;
+
+    public static final String DELETE_SCREENING_METHOD_VALUE = &quot;Delete the given screening&quot;;
+    public static final String DELETE_SCREENING_COMMAND = &quot;delete screening&quot;;
+
+    // Default accounts
+<span class="nc" id="L68">    public static final List&lt;Account&gt; DEFAULT_ACCOUNTS = List.of(</span>
+            new Account(&quot;admin&quot;, &quot;admin&quot;, Role.ADMIN)
+    );
+
+    // Account commands
+    public static final String SIGN_IN_PRIVILEGED_METHOD_VALUE = &quot;Sign in as a privileged user&quot;;
+    public static final String SIGN_IN_PRIVILEGED_COMMAND = &quot;sign in privileged&quot;;
+
+    public static final String SIGN_OUT_METHOD_VALUE = &quot;Sign out&quot;;
+    public static final String SIGN_OUT_COMMAND = &quot;sign out&quot;;
+
+    public static final String DESCRIBE_ACCOUNT_METHOD_VALUE = &quot;Describe account&quot;;
+    public static final String DESCRIBE_ACCOUNT_COMMAND = &quot;describe account&quot;;
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.6.202009150832</span></div></body></html>

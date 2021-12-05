@@ -1,0 +1,5 @@
+com\epam\training\ticketservice\room\TestRoomServiceImpl.class
+com\epam\training\ticketservice\account\TestAccountServiceImpl.class
+com\epam\training\ticketservice\movie\TestMovieServiceImpl.class
+com\epam\training\ticketservice\screening\TestScreeningServiceImpl.class
+com\epam\training\ticketservice\helpers\TestOverlappingChecker.class

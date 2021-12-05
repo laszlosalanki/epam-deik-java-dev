@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="hu"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>MovieServiceImpl.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">ticket-service</a> &gt; <a href="index.source.html" class="el_package">com.epam.training.ticketservice.movie</a> &gt; <span class="el_source">MovieServiceImpl.java</span></div><h1>MovieServiceImpl.java</h1><pre class="source lang-java linenums">package com.epam.training.ticketservice.movie;
+
+import org.springframework.stereotype.Service;
+
+import java.util.List;
+
+@Service
+public class MovieServiceImpl implements MovieService {
+
+    private MovieRepo movieRepo;
+
+<span class="fc" id="L12">    public MovieServiceImpl(MovieRepo movieRepo) {</span>
+<span class="fc" id="L13">        this.movieRepo = movieRepo;</span>
+<span class="fc" id="L14">    }</span>
+
+    @Override
+    public Movie getMovieByMovieTitle(String movieTitle) {
+<span class="fc" id="L18">        return movieRepo.searchMovieByMovieTitle(movieTitle);</span>
+    }
+
+    @Override
+    public List&lt;Movie&gt; getAllMovies() {
+<span class="fc" id="L23">        return movieRepo.findAll();</span>
+    }
+
+    @Override
+    public void createMovie(String movieTitle, String movieGenre, Integer moviePlayTime) {
+<span class="fc" id="L28">        movieRepo.save(Movie.builder()</span>
+<span class="fc" id="L29">                .withMovieTitle(movieTitle)</span>
+<span class="fc" id="L30">                .withMovieGenre(movieGenre)</span>
+<span class="fc" id="L31">                .withMoviePlayTime(moviePlayTime)</span>
+<span class="fc" id="L32">                .build());</span>
+<span class="fc" id="L33">    }</span>
+
+    @Override
+    public void deleteMovie(String movieTitle) {
+<span class="pc bpc" id="L37" title="1 of 2 branches missed.">        if (getMovieByMovieTitle(movieTitle) != null) {</span>
+<span class="fc" id="L38">            movieRepo.delete(getMovieByMovieTitle(movieTitle));</span>
+        }
+<span class="fc" id="L40">    }</span>
+
+    @Override
+    public void updateMovie(String movieTitle, String movieGenre, Integer moviePlayTime) {
+<span class="fc" id="L44">        Movie movieToUpdate = getMovieByMovieTitle(movieTitle);</span>
+<span class="pc bpc" id="L45" title="1 of 2 branches missed.">        if (movieToUpdate != null) {</span>
+<span class="fc" id="L46">            movieToUpdate.setMovieTitle(movieTitle);</span>
+<span class="fc" id="L47">            movieToUpdate.setMovieGenre(movieGenre);</span>
+<span class="fc" id="L48">            movieToUpdate.setMoviePlayTime(moviePlayTime);</span>
+<span class="fc" id="L49">            movieRepo.save(movieToUpdate);</span>
+        }
+<span class="fc" id="L51">    }</span>
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.6.202009150832</span></div></body></html>

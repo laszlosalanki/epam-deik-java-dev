@@ -30,11 +30,8 @@ public class AccountServiceImpl implements AccountService {
     }
 
     @Override
-    public String signOut() {
-        if (actualAccount == null)
-            return Constants.ALREADY_SIGNED_OUT;
+    public void signOut() {
         actualAccount = null;
-        return Constants.SIGNED_OUT;
     }
 
     @Override

@@ -19,8 +19,8 @@ public class AccountRommandHandler {
     }
 
     @ShellMethod(value = Constants.SIGN_OUT_METHOD_VALUE, key = Constants.SIGN_OUT_COMMAND)
-    public String signOut() {
-        return accountService.signOut();
+    public void signOut() {
+        accountService.signOut();
     }
 
     @ShellMethod(value = Constants.DESCRIBE_ACCOUNT_METHOD_VALUE, key = Constants.DESCRIBE_ACCOUNT_COMMAND)

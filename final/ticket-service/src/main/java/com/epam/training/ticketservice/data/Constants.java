@@ -23,6 +23,7 @@ public class Constants {
     public static final String NOT_SIGNED_IN_WITH_ADMIN_ROLE = "You are not an ADMIN";
     public static final String ALREADY_SIGNED_OUT = "Already signed out";
     public static final String SIGNED_OUT = "Signed out";
+    public static final String UNAVAILABLE_COMMAND = "Your role is not " + Role.ADMIN;
     public static final String OVERLAPPING_SCREENING = "There is an overlapping screening";
     public static final String OVERLAPPING_BREAK = "This would start in the break period after another screening in this room";
 

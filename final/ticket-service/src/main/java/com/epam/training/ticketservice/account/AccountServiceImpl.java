@@ -20,9 +20,11 @@ public class AccountServiceImpl implements AccountService {
     public String signInPrivileged(String accountName, String accountPassword) {
         Account account = getAccountByAccountName(accountName);
         if (account != null) {
-            if (account.getAccountPassword().equals(accountPassword))
+            if (account.getAccountPassword().equals(accountPassword)) {
                 actualAccount = account;
                 return null;
+            }
+            return Constants.LOGIN_FAILED_INCORRECT_CREDENTIALS;
         }
         return Constants.LOGIN_FAILED_INCORRECT_CREDENTIALS;
     }

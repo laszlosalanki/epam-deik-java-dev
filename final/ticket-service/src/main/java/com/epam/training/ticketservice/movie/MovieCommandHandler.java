@@ -1,6 +1,6 @@
 package com.epam.training.ticketservice.movie;
 
-import com.epam.training.ticketservice.configuration.Constants;
+import com.epam.training.ticketservice.data.Constants;
 import org.springframework.shell.standard.ShellComponent;
 import org.springframework.shell.standard.ShellMethod;
 

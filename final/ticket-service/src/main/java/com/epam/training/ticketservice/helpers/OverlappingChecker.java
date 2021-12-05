@@ -1,6 +1,6 @@
 package com.epam.training.ticketservice.helpers;
 
-import com.epam.training.ticketservice.configuration.Constants;
+import com.epam.training.ticketservice.data.Constants;
 import com.epam.training.ticketservice.room.Room;
 import com.epam.training.ticketservice.screening.Screening;
 import com.epam.training.ticketservice.screening.ScreeningRepo;

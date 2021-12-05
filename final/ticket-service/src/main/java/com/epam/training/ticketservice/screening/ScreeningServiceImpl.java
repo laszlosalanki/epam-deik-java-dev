@@ -1,6 +1,6 @@
 package com.epam.training.ticketservice.screening;
 
-import com.epam.training.ticketservice.configuration.Constants;
+import com.epam.training.ticketservice.data.Constants;
 import com.epam.training.ticketservice.helpers.OverlappingChecker;
 import com.epam.training.ticketservice.movie.Movie;
 import com.epam.training.ticketservice.room.Room;

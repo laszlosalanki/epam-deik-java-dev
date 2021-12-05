@@ -43,20 +43,23 @@ public class RoomCommandHandler {
     @ShellMethod(value = Constants.LIST_ROOMS_METHOD_VALUE, key = Constants.LIST_ROOMS_COMMAND)
     public String listRooms() {
         List<Room> roomList = roomService.getAllRooms();
-        if (roomList.size() == 0)
+        if (roomList.size() == 0) {
             return Constants.NO_ROOMS_AVAILABLE;
-
+        }
         StringBuilder stringBuilder = new StringBuilder();
-        for (Room r : roomList)
+        for (Room r : roomList) {
             stringBuilder.append(r.toString()).append('\n');
+        }
         return stringBuilder.toString();
     }
 
     private Availability accountAdmin() {
         Account account = accountService.getActualAccount();
-        if (account != null)
-            if (account.getAccountRole().equals(Role.ADMIN))
+        if (account != null) {
+            if (account.getAccountRole().equals(Role.ADMIN)) {
                 return Availability.available();
+            }
+        }
         return Availability.unavailable(Constants.UNAVAILABLE_COMMAND);
     }
 }

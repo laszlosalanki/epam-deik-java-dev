@@ -1,7 +1,10 @@
 package com.epam.training.ticketservice.movie;
 
 
-import javax.persistence.*;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
 import java.util.Objects;
 
 @Entity
@@ -19,9 +22,11 @@ public class Movie {
     private Integer moviePlayTime;
 
 
-    public Movie() { }
+    public Movie() {
 
-    public Movie (String movieTitle, String movieGenre, Integer moviePlayTime) {
+    }
+
+    public Movie(String movieTitle, String movieGenre, Integer moviePlayTime) {
         this.movieTitle = movieTitle;
         this.movieGenre = movieGenre;
         this.moviePlayTime = moviePlayTime;
@@ -33,7 +38,9 @@ public class Movie {
         this.moviePlayTime = movieBuilder.moviePlayTime;
     }
 
-    public static MovieBuilder builder() { return new MovieBuilder(); }
+    public static MovieBuilder builder() {
+        return new MovieBuilder();
+    }
 
     public String getMovieTitle() {
         return movieTitle;
@@ -73,8 +80,8 @@ public class Movie {
             return false;
         }
         Movie that = (Movie) o;
-        return Objects.equals(moviePlayTime, that.moviePlayTime) &&
-                Objects.equals(movieTitle, that.movieTitle);
+        return Objects.equals(moviePlayTime, that.moviePlayTime)
+                && Objects.equals(movieTitle, that.movieTitle);
     }
 
     @Override
@@ -93,7 +100,9 @@ public class Movie {
         private String movieGenre;
         private Integer moviePlayTime;
 
-        private MovieBuilder() {}
+        private MovieBuilder() {
+
+        }
 
         public MovieBuilder withMovieTitle(String movieTitle) {
             this.movieTitle = movieTitle;
@@ -110,6 +119,8 @@ public class Movie {
             return this;
         }
 
-        public Movie build() { return new Movie(this); }
+        public Movie build() {
+            return new Movie(this);
+        }
     }
 }

@@ -25,29 +25,32 @@ public class ScreeningServiceImpl implements ScreeningService {
 
     @Override
     public String createScreening(Movie movieOfScreening, Room roomOfScreening, LocalDateTime timeOfScreening) {
-        if (OverlappingChecker.isScreeningOverlapsWithAnOtherScreening(screeningRepo, roomOfScreening, timeOfScreening))
+        if (OverlappingChecker.isScreeningOverlapsWithAnOtherScreening(screeningRepo,
+                roomOfScreening, timeOfScreening)) {
             return Constants.OVERLAPPING_SCREENING;
-
-        if (OverlappingChecker.isScreeningOverlapsWithBreakTime(screeningRepo, roomOfScreening, timeOfScreening))
+        }
+        if (OverlappingChecker.isScreeningOverlapsWithBreakTime(screeningRepo, roomOfScreening, timeOfScreening)) {
             return Constants.OVERLAPPING_BREAK;
-
-        if (movieOfScreening != null && roomOfScreening != null && timeOfScreening != null)
+        }
+        if (movieOfScreening != null && roomOfScreening != null && timeOfScreening != null) {
             screeningRepo.save(Screening.builder()
-                            .withMovieOfScreening(movieOfScreening)
-                            .withRoomOfScreening(roomOfScreening)
-                            .withTimeOfScreening(timeOfScreening)
-                            .build());
-
+                    .withMovieOfScreening(movieOfScreening)
+                    .withRoomOfScreening(roomOfScreening)
+                    .withTimeOfScreening(timeOfScreening)
+                    .build());
+        }
         return null;
     }
 
     @Override
     public void deleteScreening(Movie movieOfScreening, Room roomOfScreening, LocalDateTime timeOfScreening) {
-        if (getScreening(movieOfScreening, roomOfScreening, timeOfScreening) != null)
+        if (getScreening(movieOfScreening, roomOfScreening, timeOfScreening) != null) {
             screeningRepo.delete(getScreening(movieOfScreening, roomOfScreening, timeOfScreening));
+        }
     }
 
     private Screening getScreening(Movie movieOfScreening, Room roomOfScreening, LocalDateTime timeOfScreening) {
-        return screeningRepo.getScreeningByMovieOfScreeningAndRoomOfScreeningAndTimeOfScreening(movieOfScreening, roomOfScreening, timeOfScreening);
+        return screeningRepo.getScreeningByMovieOfScreeningAndRoomOfScreeningAndTimeOfScreening(movieOfScreening,
+                roomOfScreening, timeOfScreening);
     }
 }

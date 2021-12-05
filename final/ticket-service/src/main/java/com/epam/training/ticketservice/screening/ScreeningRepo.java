@@ -8,6 +8,10 @@ import java.time.LocalDateTime;
 import java.util.List;
 
 public interface ScreeningRepo extends JpaRepository<Screening, Long> {
+
     List<Screening> findAll();
-    Screening getScreeningByMovieOfScreeningAndRoomOfScreeningAndTimeOfScreening(Movie movieOfScreening, Room roomOfScreening, LocalDateTime timeOfScreening);
+
+    Screening getScreeningByMovieOfScreeningAndRoomOfScreeningAndTimeOfScreening(Movie movieOfScreening,
+                                                                                 Room roomOfScreening,
+                                                                                 LocalDateTime timeOfScreening);
 }

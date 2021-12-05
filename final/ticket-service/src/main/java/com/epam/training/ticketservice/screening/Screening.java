@@ -27,7 +27,9 @@ public class Screening {
 
     private LocalDateTime timeOfScreening;
 
-    public Screening() {}
+    public Screening() {
+
+    }
 
     public Screening(Movie movieOfScreening, Room roomOfScreening, LocalDateTime timeOfScreening) {
         this.movieOfScreening = movieOfScreening;
@@ -41,7 +43,9 @@ public class Screening {
         this.timeOfScreening = screeningBuilder.timeOfScreening;
     }
 
-    public static ScreeningBuilder builder() { return new ScreeningBuilder(); }
+    public static ScreeningBuilder builder() {
+        return new ScreeningBuilder();
+    }
 
     public void setMovieOfScreening(Movie movieOfScreening) {
         this.movieOfScreening = movieOfScreening;
@@ -83,10 +87,16 @@ public class Screening {
 
     @Override
     public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
+        if (this == o) {
+            return true;
+        }
+        if (o == null || getClass() != o.getClass()) {
+            return false;
+        }
         Screening screening = (Screening) o;
-        return Objects.equals(movieOfScreening, screening.movieOfScreening) && Objects.equals(roomOfScreening, screening.roomOfScreening) && Objects.equals(timeOfScreening, screening.timeOfScreening);
+        return Objects.equals(movieOfScreening, screening.movieOfScreening)
+                && Objects.equals(roomOfScreening, screening.roomOfScreening)
+                && Objects.equals(timeOfScreening, screening.timeOfScreening);
     }
 
     @Override
@@ -99,7 +109,9 @@ public class Screening {
         private Room roomOfScreening;
         private LocalDateTime timeOfScreening;
 
-        private ScreeningBuilder() {}
+        private ScreeningBuilder() {
+
+        }
 
         public ScreeningBuilder withMovieOfScreening(Movie movieOfScreening) {
             this.movieOfScreening = movieOfScreening;
@@ -116,6 +128,8 @@ public class Screening {
             return this;
         }
 
-        public Screening build() { return new Screening(this); }
+        public Screening build() {
+            return new Screening(this);
+        }
     }
 }

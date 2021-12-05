@@ -2,7 +2,12 @@ package com.epam.training.ticketservice.account;
 
 import com.epam.training.ticketservice.data.Role;
 
-import javax.persistence.*;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.Enumerated;
+import javax.persistence.EnumType;
 import java.util.Objects;
 
 @Entity
@@ -18,7 +23,9 @@ public class Account {
     @Enumerated(EnumType.STRING)
     private Role accountRole;
 
-    public Account() {}
+    public Account() {
+
+    }
 
     public Account(String accountName, String accountPassword, Role accountRole) {
         this.accountName = accountName;
@@ -32,7 +39,9 @@ public class Account {
         this.accountRole = accountBuilder.accountRole;
     }
 
-    public static AccountBuilder builder() { return new AccountBuilder(); }
+    public static AccountBuilder builder() {
+        return new AccountBuilder();
+    }
 
     public String getAccountName() {
         return accountName;
@@ -53,10 +62,15 @@ public class Account {
 
     @Override
     public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
+        if (this == o) {
+            return true;
+        }
+        if (o == null || getClass() != o.getClass()) {
+            return false;
+        }
         Account account = (Account) o;
-        return Objects.equals(accountName, account.accountName) && Objects.equals(accountPassword, account.accountPassword) && accountRole == account.accountRole;
+        return Objects.equals(accountName, account.accountName)
+                && Objects.equals(accountPassword, account.accountPassword) && accountRole == account.accountRole;
     }
 
     @Override
@@ -69,7 +83,9 @@ public class Account {
         private String accountPassword;
         private Role accountRole;
 
-        private AccountBuilder() {}
+        private AccountBuilder() {
+
+        }
 
         public AccountBuilder withAccountName(String accountName) {
             this.accountName = accountName;
@@ -86,6 +102,8 @@ public class Account {
             return this;
         }
 
-        public Account build() { return new Account(this); }
+        public Account build() {
+            return new Account(this);
+        }
     }
 }

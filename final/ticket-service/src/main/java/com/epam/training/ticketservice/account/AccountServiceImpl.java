@@ -36,13 +36,15 @@ public class AccountServiceImpl implements AccountService {
 
     @Override
     public String describeAccount() {
-        if (actualAccount == null)
+        if (actualAccount == null) {
             return Constants.NOT_SIGNED_IN;
-        if (actualAccount.getAccountRole().equals(Role.ADMIN))
+        }
+        if (actualAccount.getAccountRole().equals(Role.ADMIN)) {
             return new StringBuilder(Constants.SIGNED_IN_PRIVILEGED_ACCOUNT)
                     .append(actualAccount.getAccountName())
                     .append("'")
                     .toString();
+        }
         return Constants.NOT_SIGNED_IN_WITH_ADMIN_ROLE;
     }
 
@@ -53,8 +55,9 @@ public class AccountServiceImpl implements AccountService {
 
     @PostConstruct
     public void initializeDefaultAccounts() {
-        for (Account a : Constants.DEFAULT_ACCOUNTS)
+        for (Account a : Constants.DEFAULT_ACCOUNTS) {
             accountRepo.save(a);
+        }
     }
 
     public Account getAccountByAccountName(String accountName) {

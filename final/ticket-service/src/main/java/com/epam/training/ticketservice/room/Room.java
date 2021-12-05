@@ -19,7 +19,9 @@ public class Room {
     private Long roomNumOfRows;
     private Long roomNumOfCols;
 
-    public Room() {}
+    public Room() {
+
+    }
 
     public Room(String roomName, Long roomNumOfRows, Long roomNumOfCols) {
         this.roomName = roomName;
@@ -33,7 +35,9 @@ public class Room {
         this.roomNumOfCols = roomBuilder.roomNumOfCols;
     }
 
-    public static RoomBuilder builder() { return new RoomBuilder(); }
+    public static RoomBuilder builder() {
+        return new RoomBuilder();
+    }
 
     public void setRoomName(String roomName) {
         this.roomName = roomName;
@@ -61,24 +65,23 @@ public class Room {
 
     @Override
     public String toString() {
-        return new StringBuilder("Room ")
-                .append(roomName)
-                .append(" with ")
-                .append(roomNumOfCols*roomNumOfRows)
-                .append(" seats, ")
-                .append(roomNumOfRows)
-                .append(" rows and ")
-                .append(roomNumOfCols)
-                .append(" columns")
-                .toString();
+        return new StringBuilder("Room ").append(roomName).append(" with ").append(roomNumOfCols * roomNumOfRows)
+            .append(" seats, ").append(roomNumOfRows).append(" rows and ").append(roomNumOfCols)
+            .append(" columns").toString();
     }
 
     @Override
     public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
+        if (this == o) {
+            return true;
+        }
+        if (o == null || getClass() != o.getClass()) {
+            return false;
+        }
         Room room = (Room) o;
-        return Objects.equals(roomName, room.roomName) && Objects.equals(roomNumOfRows, room.roomNumOfRows) && Objects.equals(roomNumOfCols, room.roomNumOfCols);
+        return Objects.equals(roomName, room.roomName)
+                && Objects.equals(roomNumOfRows, room.roomNumOfRows)
+                && Objects.equals(roomNumOfCols, room.roomNumOfCols);
     }
 
     @Override
@@ -91,7 +94,9 @@ public class Room {
         private Long roomNumOfRows;
         private Long roomNumOfCols;
 
-        private RoomBuilder() {}
+        private RoomBuilder() {
+
+        }
 
         public RoomBuilder withRoomName(String roomName) {
             this.roomName = roomName;
@@ -108,6 +113,8 @@ public class Room {
             return this;
         }
 
-        public Room build() { return new Room(this); }
+        public Room build() {
+            return new Room(this);
+        }
     }
 }

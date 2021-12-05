@@ -7,7 +7,10 @@ import java.time.LocalDateTime;
 import java.util.List;
 
 public interface ScreeningService {
+
     List<Screening> getAllScreenings();
+
     String createScreening(Movie movieOfScreening, Room roomOfScreening, LocalDateTime timeOfScreening);
+
     void deleteScreening(Movie movieOfScreening, Room roomOfScreening, LocalDateTime timeOfScreening);
 }

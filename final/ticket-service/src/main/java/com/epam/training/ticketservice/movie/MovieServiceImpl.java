@@ -9,7 +9,9 @@ public class MovieServiceImpl implements MovieService {
 
     private MovieRepo movieRepo;
 
-    public MovieServiceImpl(MovieRepo movieRepo) { this.movieRepo = movieRepo; }
+    public MovieServiceImpl(MovieRepo movieRepo) {
+        this.movieRepo = movieRepo;
+    }
 
     @Override
     public Movie getMovieByMovieTitle(String movieTitle) {
@@ -32,8 +34,9 @@ public class MovieServiceImpl implements MovieService {
 
     @Override
     public void deleteMovie(String movieTitle) {
-        if (getMovieByMovieTitle(movieTitle) != null)
+        if (getMovieByMovieTitle(movieTitle) != null) {
             movieRepo.delete(getMovieByMovieTitle(movieTitle));
+        }
     }
 
     @Override

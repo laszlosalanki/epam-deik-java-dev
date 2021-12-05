@@ -25,7 +25,8 @@ public class Constants {
     public static final String SIGNED_OUT = "Signed out";
     public static final String UNAVAILABLE_COMMAND = "Your role is not " + Role.ADMIN;
     public static final String OVERLAPPING_SCREENING = "There is an overlapping screening";
-    public static final String OVERLAPPING_BREAK = "This would start in the break period after another screening in this room";
+    public static final String
+            OVERLAPPING_BREAK = "This would start in the break period after another screening in this room";
 
     // Movie commands
     public static final String CREATE_MOVIE_METHOD_VALUE = "Create a new movie";

@@ -34,8 +34,9 @@ public class RoomServiceImpl implements RoomService {
 
     @Override
     public void deleteRoom(String roomName) {
-        if (getRoomByRoomName(roomName) != null)
+        if (getRoomByRoomName(roomName) != null) {
             roomRepo.delete(getRoomByRoomName(roomName));
+        }
     }
 
     @Override
